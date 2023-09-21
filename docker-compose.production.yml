@@ -18,13 +18,13 @@ services:
       - static:/static/
       - media:/app/media/
   frontend:
+    image: beonewithyuri/kittygram_frontend
     env_file: .env
-    build: beonewithyuri/kittygram_frontend
     command: cp -r /app/build/. /static/
     volumes:
       - static:/static
   gateway:
-    build: beonewithyuri/kittygram_gateway
+    image: beonewithyuri/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
