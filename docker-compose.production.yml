@@ -1,8 +1,8 @@
 version: '3'
 
 volumes:
-  pg_data:
-  statics:
+  pg_data_production:
+  static_volume:
   media:
 
 services:
@@ -10,24 +10,24 @@ services:
     image: postgres:13
     env_file: .env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pg_data_production:/var/lib/postgresql/data
   backend:
     image: beonewithyuri/kittygram_backend
     env_file: .env
     volumes:
-      - static:/static/
+      - static_volume:/backend_static
       - media:/app/media/
   frontend:
     image: beonewithyuri/kittygram_frontend
     env_file: .env
     command: cp -r /app/build/. /static/
     volumes:
-      - static:/static
+      - static_volume:/frontend_static
   gateway:
     image: beonewithyuri/kittygram_gateway
     env_file: .env
     ports:
       - 9000:80
     volumes:
-      - static:/static
+      - static_volume:/staticfiles/
       - media:/app/media/
