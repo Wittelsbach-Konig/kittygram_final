@@ -1,7 +1,6 @@
 
 <details close>
-
-#  Как работать с репозиторием финального задания
+<summary><h2 style="display: inline">Как работать с репозиторием финального задания <h3 style="display: inline">▶</h3></h2></summary>
 
 ## Что нужно сделать
 
